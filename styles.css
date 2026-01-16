@@ -1,0 +1,59 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-blue: #00BFFF;
+  --deep-black: #0a0a0a;
+  --glass-white: rgba(255, 255, 255, 0.8);
+}
+
+body {
+  background-color: var(--deep-black);
+  color: var(--glass-white);
+  font-family: 'Inter', sans-serif; /* A modern sans-serif font */
+}
+
+/* Keyframe for fade-in-up animation */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframe for hover-glow effect */
+@keyframes hover-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--neon-blue), 0 0 25px var(--neon-blue);
+  }
+}
+
+/* Keyframe for the pulsing FAB glow */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 191, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 191, 255, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}

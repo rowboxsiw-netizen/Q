@@ -1,0 +1,67 @@
+
+<!-- 
+  This container uses mouseenter and mouseleave for a smooth hover effect on desktop.
+  The fixed positioning places it at the bottom-right of the viewport.
+-->
+<div 
+  class="fixed bottom-8 right-8 z-50 flex flex-col items-center gap-4"
+  (mouseenter)="expand()"
+  (mouseleave)="collapse()">
+
+  <!-- 
+    This is the content that appears when the FAB is expanded.
+    The `@if` block efficiently adds or removes this part of the DOM based on the signal's state.
+  -->
+  @if (isExpanded()) {
+    <div class="flex flex-col items-center gap-4 p-4 bg-black/30 backdrop-blur-lg border border-white/20 rounded-full transition-all duration-300 ease-in-out">
+      <!-- Gmail Link -->
+      <a 
+        href="mailto:noreply@authorize.qzz.io" 
+        target="_blank"
+        class="w-12 h-12 flex items-center justify-center bg-gray-700/50 rounded-full hover:bg-cyan-500/70 transform hover:scale-110 transition-transform"
+        aria-label="Send an email to Bharat Singh">
+        <img 
+          ngSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1280px-Gmail_icon_%282020%29.svg.png"
+          alt="Gmail Icon"
+          width="28"
+          height="28"
+          class="object-contain" />
+      </a>
+      
+      <!-- WhatsApp Link -->
+      <a 
+        href="https://wa.me/9779826048177?text=Hello" 
+        target="_blank"
+        class="w-12 h-12 flex items-center justify-center bg-gray-700/50 rounded-full hover:bg-green-500/70 transform hover:scale-110 transition-transform"
+        aria-label="Contact Bharat Singh on WhatsApp">
+        <img 
+          ngSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/662px-WhatsApp_icon.png"
+          alt="WhatsApp Icon"
+          width="32"
+          height="32"
+          priority="true"
+          class="object-contain" />
+      </a>
+    </div>
+  }
+
+  <!-- 
+    The main toggle button. Always visible.
+    It has a pulse animation to draw attention.
+    The icon inside rotates based on the expansion state for a nice visual cue.
+  -->
+  <button 
+    (click)="toggle()"
+    class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-opacity-75 animate-pulse-glow"
+    aria-label="Toggle contact menu">
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      class="h-8 w-8 text-white transition-transform duration-300"
+      [class.rotate-45]="isExpanded()"
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+    </svg>
+  </button>
+</div>
